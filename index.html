@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstroX — Ropa Deportiva</title>
+  <meta name="description" content="AstroX. Ropa deportiva para hombre, mujer y unisex.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+
+<body>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="header">
+    <nav class="nav contenedor">
+      <a href="#" class="logo" data-seccion="inicio">ASTRO<span class="punto">X</span></a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#" data-seccion="inicio">Inicio</a></li>
+        <li><a href="#" data-seccion="catalogo">Catálogo</a></li>
+        <li><a href="#" data-seccion="nosotros">Nosotros</a></li>
+        <li><a href="#" data-seccion="contacto">Contacto</a></li>
+      </ul>
+
+      <div class="nav-acciones">
+        <button class="icon-btn" id="btn-favoritos" aria-label="Favoritos" onclick="irASeccion('catalogo')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M12 21s-7.5-4.6-10-9.3C.6 8.1 2.4 4.5 6 4c2-.3 3.7.7 6 3 2.3-2.3 4-3.3 6-3 3.6.5 5.4 4.1 4 7.7C19.5 16.4 12 21 12 21Z"
+              stroke-linejoin="round" />
+          </svg>
+          <span class="badge-contador" id="contador-fav">0</span>
+        </button>
+        <button class="icon-btn" id="btn-usuario" aria-label="Cuenta"><svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 21c1.5-4.5 5-6.5 8-6.5s6.5 2 8 6.5" stroke-linecap="round" />
+          </svg></button>
+        <button class="icon-btn" id="btn-carrito" aria-label="Carrito">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="20" r="1.4" />
+            <circle cx="18" cy="20" r="1.4" />
+            <path d="M2 3h3l2.6 12.4A2 2 0 0 0 9.5 17h8a2 2 0 0 0 1.9-1.4L21 8H6" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <span class="badge-contador" id="contador-carrito">0</span>
+        </button>
+        <button class="nav-burger" id="nav-burger" aria-label="Menú">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ INICIO ============ -->
+    <section class="seccion-app" id="seccion-inicio">
+
+      <div class="hero">
+        <div class="contenedor hero-grid">
+          <div class="hero-texto">
+            <span class="eyebrow">Colección 2026</span>
+            <h1>DOMINA<br>CADA <span>MOVIMIENTO</span></h1>
+            <p>Ropa deportiva diseñada para rendir al máximo: técnica, cómoda y con actitud. Para hombre, mujer y
+              unisex.</p>
+            <div class="hero-cta">
+              <button class="btn btn-primario" data-seccion="catalogo" onclick="irASeccion('catalogo')">Comprar
+                ahora</button>
+              <button class="btn btn-fantasma" data-seccion="nosotros"
+                onclick="irASeccion('nosotros')">Conócenos</button>
+            </div>
+            <div class="hero-stats">
+              <div><strong>+20</strong><span>Referencias</span></div>
+              <div><strong>3</strong><span>Categorías</span></div>
+              <div><strong>100%</strong><span>Envíos Medellín</span></div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-panel">
+              <img src="img/hero-panel.jpg" alt="Hero panel">
+              <span class="hero-panel-badge">NUEVA COLECCIÓN →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="promo-bar">
+        <div class="promo-track">
+          <span>ENVÍOS EN MEDELLÍN</span><span>◆</span>
+          <span>PAGA CONTRAENTREGA</span><span>◆</span>
+          <span>NUEVAS REFERENCIAS CADA MES</span><span>◆</span>
+          <span>ENVÍOS EN MEDELLÍN</span><span>◆</span>
+          <span>PAGA CONTRAENTREGA</span><span>◆</span>
+          <span>NUEVAS REFERENCIAS CADA MES</span><span>◆</span>
+        </div>
+      </div>
+
+      <div class="seccion contenedor">
+        <div class="titulo-seccion">
+          <div>
+            <span class="eyebrow">Selección</span>
+            <h2>Productos destacados</h2>
+          </div>
+          <p>Lo más nuevo y lo más vendido de la temporada, elegido para que rindas al máximo.</p>
+        </div>
+        <div class="grilla-productos" id="grilla-destacados"></div>
+      </div>
+
+    </section>
+
+    <!-- ============ CATÁLOGO ============ -->
+    <section class="seccion-app oculto" id="seccion-catalogo">
+      <div class="seccion contenedor">
+        <div class="catalogo-header">
+          <span class="eyebrow">Tienda completa</span>
+          <h2>Catálogo</h2>
+        </div>
+
+        <div class="tabs-categoria">
+          <button class="tab-cat activo" data-cat="Todos">Todos</button>
+          <button class="tab-cat" data-cat="Hombre">Hombre</button>
+          <button class="tab-cat" data-cat="Mujer">Mujer</button>
+          <button class="tab-cat" data-cat="Unisex">Unisex</button>
+        </div>
+
+        <div class="buscador">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" stroke-linecap="round" />
+          </svg>
+          <input type="text" id="input-buscar" placeholder="Buscar producto…">
+        </div>
+
+        <div class="catalogo-layout">
+          <aside class="filtros">
+            <div class="filtro-grupo">
+              <div class="filtro-titulo">Tipo de prenda</div>
+              <div id="filtro-tipos"></div>
+            </div>
+            <div class="filtro-grupo">
+              <div class="filtro-titulo">Precio</div>
+              <label class="filtro-opcion"><input type="checkbox" class="chk-precio" value="bajo"> $20.000 –
+                $50.000</label>
+              <label class="filtro-opcion"><input type="checkbox" class="chk-precio" value="medio"> $50.000 –
+                $80.000</label>
+              <label class="filtro-opcion"><input type="checkbox" class="chk-precio" value="alto"> $80.000+</label>
+            </div>
+            <div class="filtro-grupo">
+              <div class="filtro-titulo">Color</div>
+              <div class="filtro-color">
+                <button style="background:#0a0a0f" data-color="#0a0a0f" aria-label="Negro"></button>
+                <button style="background:#f5f6fa" data-color="#f5f6fa" aria-label="Blanco"></button>
+                <button style="background:#2f5bff" data-color="#2f5bff" aria-label="Azul"></button>
+                <button style="background:#ff3b5c" data-color="#ff3b5c" aria-label="Rojo"></button>
+                <button style="background:#8a8f9c" data-color="#8a8f9c" aria-label="Gris"></button>
+              </div>
+            </div>
+            <button class="limpiar-filtros" id="limpiar-filtros">Limpiar filtros</button>
+          </aside>
+
+          <div>
+            <div class="resultado-conteo" id="resultado-conteo"></div>
+            <div class="grilla-productos" id="grilla-catalogo"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NOSOTROS ============ -->
+    <section class="seccion-app oculto" id="seccion-nosotros">
+      <div class="seccion contenedor">
+        <div class="nosotros-intro">
+          <div>
+            <span class="eyebrow">Quiénes somos</span>
+            <h2 style="margin:14px 0 18px;font-size:36px;">Hecha por y para quienes entrenan</h2>
+            <p>AstroX nació en Medellín con una idea simple: la ropa deportiva debe verse tan bien como se siente.
+              Diseñamos prendas técnicas, resistentes y con una estética urbana pensada para el gimnasio, la calle y
+              todo lo que hay entre medio.</p>
+            <p>Trabajamos con proveedores confiables y control de calidad en cada lote, para que cada prenda que llega a
+              tus manos cumpla con el nivel AstroX.</p>
+            <div class="valores-lista">
+              <div class="valor-item">Disciplina</div>
+              <div class="valor-item">Calidad</div>
+              <div class="valor-item">Actitud</div>
+              <div class="valor-item">Comunidad</div>
+              <div class="valor-item">Innovación</div>
+              <div class="valor-item">Confianza</div>
+            </div>
+          </div>
+          <div class="hero-visual" style="height:380px;">
+            <div class="hero-panel" style="transform:rotate(4deg);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <path d="M7 2 3 5l2.5 2.5L7 6.5v4.5h4l.5 3h1L13 11h4V6.5l1.5 1L21 5l-4-3-2 1.7H9L7 2Z"
+                  stroke-linejoin="round" />
+                <path d="M9 14l-1.5 8h9L15 14" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="grilla-mvo">
+          <div class="tarjeta-mvo franja">
+            <span class="num">Misión</span>
+            <h3>Impulsar tu rendimiento</h3>
+            <p>Diseñar y ofrecer ropa deportiva de alta calidad, funcional y con identidad propia, que acompañe a cada
+              persona en su proceso de entrenamiento y estilo de vida activo.</p>
+          </div>
+          <div class="tarjeta-mvo franja">
+            <span class="num">Visión</span>
+            <h3>Referente regional</h3>
+            <p>Ser reconocidos en Medellín y el país como una marca deportiva confiable, cercana a su comunidad y en
+              constante innovación en diseño y materiales.</p>
+          </div>
+          <div class="tarjeta-mvo franja">
+            <span class="num">Objetivos</span>
+            <h3>Crecer con propósito</h3>
+            <p>Ampliar nuestro catálogo, fortalecer la atención al cliente y construir relaciones duraderas con
+              proveedores y compradores.</p>
+          </div>
+        </div>
+
+        <div class="titulo-seccion">
+          <div><span class="eyebrow">Compromisos</span>
+            <h2>Nuestras políticas</h2>
+          </div>
+        </div>
+        <div class="grilla-politicas">
+          <div class="politica-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" stroke-linejoin="round" />
+            </svg>
+            <h4>Calidad</h4>
+            <p>Revisión de cada prenda antes de despacho.</p>
+          </div>
+          <div class="politica-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M4 13v-1a8 8 0 0 1 16 0v1" stroke-linecap="round" />
+              <rect x="2" y="13" width="5" height="7" rx="2" />
+              <rect x="17" y="13" width="5" height="7" rx="2" />
+            </svg>
+            <h4>Atención al cliente</h4>
+            <p>Respuesta rápida por WhatsApp y redes.</p>
+          </div>
+          <div class="politica-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <rect x="4" y="11" width="16" height="9" rx="2" />
+              <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+            </svg>
+            <h4>Confidencialidad</h4>
+            <p>Tus datos nunca se comparten con terceros.</p>
+          </div>
+          <div class="politica-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M2 7h11v9H2z" />
+              <path d="M13 10h4l4 3v3h-8v-6Z" />
+              <circle cx="6.5" cy="18" r="1.6" />
+              <circle cx="17" cy="18" r="1.6" />
+            </svg>
+            <h4>Proveedores</h4>
+            <p>Alianzas confiables y trato justo.</p>
+          </div>
+          <div class="politica-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <circle cx="9" cy="8" r="3" />
+              <circle cx="17" cy="9" r="2.5" />
+              <path d="M3 21c.7-3.5 3-5.5 6-5.5s5.3 2 6 5.5M15 15.5c2.4.2 4 1.9 4.6 5.5" stroke-linecap="round" />
+            </svg>
+            <h4>Accionistas</h4>
+            <p>Gestión transparente y crecimiento sostenible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="seccion-app oculto" id="seccion-contacto">
+      <div class="seccion contenedor">
+        <div class="titulo-seccion">
+          <div><span class="eyebrow">Hablemos</span>
+            <h2>Contáctanos</h2>
+          </div>
+          <p>¿Dudas sobre una prenda, tallas o tu pedido? Escríbenos.</p>
+        </div>
+        <div class="contacto-grid">
+          <form id="form-contacto">
+            <div class="form-grupo">
+              <label for="c-nombre">Nombre</label>
+              <input type="text" id="c-nombre" required>
+            </div>
+            <div class="form-grupo">
+              <label for="c-correo">Correo</label>
+              <input type="email" id="c-correo" required>
+            </div>
+            <div class="form-grupo">
+              <label for="c-mensaje">Mensaje</label>
+              <textarea id="c-mensaje" required></textarea>
+            </div>
+            <button class="btn btn-primario btn-bloque" type="submit">Enviar mensaje</button>
+          </form>
+
+          <div class="contacto-info">
+            <h3>Información</h3>
+            <div class="contacto-linea"><svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C9.4 9 8.9 7.8 8.7 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3C6.6 7.5 6 8.1 6 9.4c0 1.3.9 2.6 1.1 2.8.1.2 1.9 3 4.7 4.1 2.7 1.1 2.7.7 3.2.7.5 0 1.7-.7 1.9-1.3.2-.7.2-1.2.1-1.3Z" />
+                <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z" />
+              </svg> +57 313 6244502</div>
+            <div class="contacto-linea"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg> contacto@astrox.co</div>
+            <div class="contacto-linea"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <path d="M12 21s7-6.3 7-11.5A7 7 0 0 0 5 9.5C5 14.7 12 21 12 21Z" />
+                <circle cx="12" cy="9.5" r="2.5" />
+              </svg> Medellín, Colombia</div>
+            <div class="redes">
+              <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.7">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" />
+                </svg></a>
+              <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M13 22v-8h2.7l.4-3.2H13V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2C16 4.1 14.9 4 13.7 4c-2.6 0-4.4 1.6-4.4 4.5v2.3H6.6V13H9.3v9H13Z" />
+                </svg></a>
+              <a href="https://wa.me/573136244502" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M17 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C9.4 9 8.9 7.8 8.7 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3C6.6 7.5 6 8.1 6 9.4c0 1.3.9 2.6 1.1 2.8.1.2 1.9 3 4.7 4.1 2.7 1.1 2.7.7 3.2.7.5 0 1.7-.7 1.9-1.3.2-.7.2-1.2.1-1.3Z" />
+                  <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z" />
+                </svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom:12px;">ASTRO<span class="punto">X</span></div>
+          <p style="color:var(--gray);font-size:14px;max-width:280px;">Ropa deportiva para hombre, mujer y unisex.
+            Diseñada en Medellín para quienes no paran de moverse.</p>
+        </div>
+        <div>
+          <h4>Tienda</h4>
+          <ul>
+            <li><a href="#" data-seccion="catalogo" onclick="irASeccion('catalogo')">Catálogo</a></li>
+            <li><a href="#" data-seccion="nosotros" onclick="irASeccion('nosotros')">Nosotros</a></li>
+            <li><a href="#" data-seccion="contacto" onclick="irASeccion('contacto')">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li>+57 313 6244502</li>
+            <li>contacto@astrox.co</li>
+            <li>Medellín, Colombia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 AstroX. Todos los derechos reservados.</span>
+        <span>Proyecto académico — PCJIC</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL: PRODUCTO ============ -->
+  <div class="overlay oculto" id="overlay-producto">
+    <div class="modal modal-producto">
+      <button class="modal-cerrar" data-cerrar-modal="overlay-producto"><svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <path d="M5 5l14 14M19 5 5 19" stroke-linecap="round" />
+        </svg></button>
+      <div class="mp-media" id="mp-icono"></div>
+      <div class="mp-info">
+        <span class="tp-cat" id="mp-cat"></span>
+        <h2 id="mp-nombre"></h2>
+        <span class="precio" id="mp-precio"></span>
+        <p class="desc" id="mp-desc"></p>
+
+        <div class="selector-titulo">Color</div>
+        <div class="selector-colores" id="mp-colores"></div>
+
+        <div class="selector-titulo">Talla</div>
+        <div class="selector-tallas" id="mp-tallas"></div>
+
+        <button class="btn btn-primario btn-bloque" id="mp-agregar">Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: CARRITO ============ -->
+  <div class="overlay oculto" id="overlay-carrito">
+    <div class="modal modal-carrito">
+      <button class="modal-cerrar" data-cerrar-modal="overlay-carrito"><svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <path d="M5 5l14 14M19 5 5 19" stroke-linecap="round" />
+        </svg></button>
+      <h2>Tu carrito</h2>
+      <div class="aviso-login" id="aviso-login-carrito">Debes iniciar sesión para realizar la compra.</div>
+      <div id="carrito-items"></div>
+      <div class="carrito-total-row"><span>Total</span><span id="carrito-total">$0</span></div>
+      <button class="btn btn-primario btn-bloque" id="btn-finalizar-compra">Finalizar compra por WhatsApp</button>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: LOGIN / REGISTRO ============ -->
+  <div class="overlay oculto" id="overlay-login">
+    <div class="modal modal-login">
+      <button class="modal-cerrar" data-cerrar-modal="overlay-login"><svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <path d="M5 5l14 14M19 5 5 19" stroke-linecap="round" />
+        </svg></button>
+      <h2>Bienvenido a AstroX</h2>
+      <p class="sub">Inicia sesión para comprar o crea tu cuenta.</p>
+
+      <div class="tabs-login">
+        <button class="tab-login activo" data-tab="ingresar">Ingresar</button>
+        <button class="tab-login" data-tab="registrar">Registrarse</button>
+      </div>
+
+      <form id="form-ingresar">
+        <div class="form-grupo">
+          <label for="login-correo">Correo</label>
+          <input type="email" id="login-correo" required>
+        </div>
+        <div class="form-grupo">
+          <label for="login-clave">Contraseña</label>
+          <input type="password" id="login-clave" required minlength="4">
+        </div>
+        <div class="error-msg" id="error-login"></div>
+        <button class="btn btn-primario btn-bloque" type="submit">Ingresar</button>
+      </form>
+
+      <form id="form-registrar" class="oculto">
+        <div class="form-grupo">
+          <label for="reg-nombre">Nombre</label>
+          <input type="text" id="reg-nombre" required>
+        </div>
+        <div class="form-grupo">
+          <label for="reg-correo">Correo</label>
+          <input type="email" id="reg-correo" required>
+        </div>
+        <div class="form-grupo">
+          <label for="reg-clave">Contraseña</label>
+          <input type="password" id="reg-clave" required minlength="4">
+        </div>
+        <div class="error-msg" id="error-registro"></div>
+        <button class="btn btn-primario btn-bloque" type="submit">Crear cuenta</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ TOASTS ============ -->
+  <div class="toast-cont" id="toast-cont"></div>
+
+  <!-- ============ BOTONES FLOTANTES ============ -->
+  <div class="flotantes">
+    <button class="flot-btn flot-arriba" id="btn-arriba" aria-label="Volver arriba"><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
+      </svg></button>
+    <a class="flot-btn flot-whatsapp" href="https://wa.me/573136244502" target="_blank" aria-label="WhatsApp"><svg
+        viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M17 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C9.4 9 8.9 7.8 8.7 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3C6.6 7.5 6 8.1 6 9.4c0 1.3.9 2.6 1.1 2.8.1.2 1.9 3 4.7 4.1 2.7 1.1 2.7.7 3.2.7.5 0 1.7-.7 1.9-1.3.2-.7.2-1.2.1-1.3Z" />
+        <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z" />
+      </svg></a>
+  </div>
+
+  <script src="productos.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
